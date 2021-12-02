@@ -1,6 +1,5 @@
 
-
-public inline fun <T, R> Iterable<T>.zipSlidingWindow(windowLength: Int, transform: (window: List<T>) -> R): List<R> {
+private inline fun <T, R> Iterable<T>.zipSlidingWindow(windowLength: Int, transform: (window: List<T>) -> R): List<R> {
     val iterator = iterator()
     val result = mutableListOf<R>()
     val window = mutableListOf<T>()
@@ -35,6 +34,6 @@ fun main() {
     check(part2(testInput) == 0)
 
     val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    println("Part 1: ${part1(input)}")
+    println("Part 2: ${part2(input)}")
 }
