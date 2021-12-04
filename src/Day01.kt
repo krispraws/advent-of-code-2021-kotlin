@@ -1,3 +1,4 @@
+import java.io.File
 
 private inline fun <T, R> Iterable<T>.zipSlidingWindow(windowLength: Int, transform: (window: List<T>) -> R): List<R> {
     val iterator = iterator()
@@ -28,6 +29,17 @@ fun main() {
         return countIncreasingDeltas(input.map { s -> s.toInt() }.zipSlidingWindow(3) { l -> l.sum() })
     }
 
+    fun part2OneLine()
+        = File("src/Day01.txt").useLines { lines ->
+            lines.map { s ->
+                s.toInt()
+            }.windowed(3).map { w ->
+                w.sum()
+            }.zipWithNext().count {
+                it.second > it.first
+            }
+        }
+
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day01_test")
     check(part1(testInput) == 2)
@@ -36,4 +48,5 @@ fun main() {
     val input = readInput("Day01")
     println("Part 1: ${part1(input)}")
     println("Part 2: ${part2(input)}")
+    println("Part 2 one line: ${part2OneLine()}")
 }
