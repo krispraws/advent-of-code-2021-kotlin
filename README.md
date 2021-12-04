@@ -9,6 +9,8 @@ To run the code:
 ```
 ./gradlew wrapper
 ./gradlew build
+# Run unit tests
+./gradlew test
 # Replace XX by the day e.g. ./gradlew run -PexecMainClass=Day02Kt
 ./gradlew run -PexecMainClass=Day<XX>Kt
 ```

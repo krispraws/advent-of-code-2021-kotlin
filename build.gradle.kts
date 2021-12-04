@@ -14,6 +14,9 @@ tasks {
         main {
             java.srcDirs("src")
         }
+        test {
+            java.srcDirs("src")
+        }
     }
 
     test {
