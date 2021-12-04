@@ -1,6 +1,10 @@
 # advent-of-code-2021-kotlin
 
 This repository uses the [Advent of Code Kotlin Template][template] delivered by JetBrains.
+
+By intent, the code is not particularly robust or efficient.
+My goal was to try unfamiliar language constructs and try to make it re-usable.
+
 To run the code:
 ```
 ./gradlew wrapper
