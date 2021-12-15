@@ -23,7 +23,7 @@ private fun readBingoInput(fileName: String) : Pair<List<Int>, List<BingoBoard>>
         var calledNumbers = mutableListOf<Int>()
         var boards = mutableListOf<BingoBoard>()
         for (chunk in chunkByEmptyLines(lines)) {
-            println("chunk: $chunk")
+            // println("chunk: $chunk")
             if (!firstLine) {
                 check(chunk.size == 1) { "First line must be list of called numbers" }
                 firstLine = true
@@ -55,10 +55,6 @@ class BingoBoard (val size: Int, nums: List<Int> ) {
     var status = BoardStatus(false, 0)
         private set
 
-    /**
-     * Mark number if present in the board by replacing it with its negative equivalent.
-     * Return true if the board wins after marking the number, false otherwise
-     */
     fun mark(num: Int): BoardStatus {
         var marked = false
         var winner = false
@@ -128,6 +124,12 @@ class Day04 {
         return 0
     }
 
+    /*
+        The implementation currently continues to mark boards that have already won with new numbers called.
+        However the winning score for boards is only computed when they first win.
+        This can be optimized further by not considering already won boards for future numbers,
+        and/or making `mark` a no-op for already won boards.
+     */
     fun part2(calledNumbers: List<Int>, boards: List<BingoBoard>): Int {
         for (num in calledNumbers) {
             val newWinners = boards.mapIndexed { bIndex, b ->
